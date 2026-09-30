@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jujosmi Labs</title>
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:auto;padding:0 28px}
+header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222}
+.brand{font-size:25px;font-weight:700;font-style:italic;letter-spacing:-1.5px}
+.nav{display:flex;gap:28px;font-size:12px;letter-spacing:1.5px}
+.hero{min-height:620px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero-logo{width:min(1100px,96vw);height:auto;display:block}
+.tagline{margin-top:18px;color:#999;font-size:15px;letter-spacing:.4px}
+.projects{padding:90px 0}
+.section-title{font-size:12px;letter-spacing:3px;color:#777;margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.project{border:1px solid #292929;padding:30px;min-height:180px;transition:.2s}
+.project:hover{border-color:#777;transform:translateY(-2px)}
+.project h2{font-size:25px;margin:0 0 12px}
+.project p{color:#999;line-height:1.6;margin:0 0 22px}
+.status{font-size:11px;letter-spacing:2px;color:#fff}
+.about{padding:40px 0 120px;max-width:650px}
+.about h2{font-size:32px;margin:0 0 15px}
+.about p{color:#999;line-height:1.7}
+footer{border-top:1px solid #222;padding:25px 0;color:#666;font-size:11px}
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr}
+  .hero{min-height:520px}
+  .nav{gap:14px}
+  .wrap{padding:0 20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="index.html">jujosmi</a>
+  <nav class="nav"><a href="#projects">PROJECTS</a><a href="#about">ABOUT</a></nav>
+</header>
+
+<section class="hero">
+  <img class="hero-logo" src="assets/jujosmi-logo-detailed.png" alt="Jujosmi Labs logo">
+  <div class="tagline">Software &amp; experimental technology.</div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="section-title">PROJECTS</div>
+  <div class="grid">
+    <a class="project" href="cloneheroai.html">
+      <h2>Clone Hero AI</h2>
+      <p>Audio analysis and machine learning for generating playable Clone Hero charts.</p>
+      <div class="status">IN DEVELOPMENT →</div>
+    </a>
+    <div class="project">
+      <h2>Trading AI</h2>
+      <p>Machine learning research for market analysis, strategy testing, and automated trading.</p>
+      <div class="status">PLANNED →</div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-title">ABOUT</div>
+  <h2>The Need To Succeed</h2>
+  <p>Jujosmi Labs is an independent software and experimental technology studio focused on building unusual ideas and turning them into working systems.</p>
+</section>
+
+<footer>© 2026 Jujosmi Labs</footer>
+</div>
+</body>
+</html>
