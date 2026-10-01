@@ -1,77 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jujosmi Labs</title>
-<link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Jujosmi Labs // Home</title><link rel="icon" type="image/png" href="favicon.png">
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1100px;margin:auto;padding:0 28px}
-header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222}
-.brand{font-size:25px;font-weight:700;font-style:italic;letter-spacing:-1.5px}
-.nav{display:flex;gap:28px;font-size:12px;letter-spacing:1.5px}
-.hero{min-height:620px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.hero-logo{width:min(1100px,96vw);height:auto;display:block}
-.tagline{margin-top:18px;color:#999;font-size:15px;letter-spacing:.4px}
-.projects{padding:90px 0}
-.section-title{font-size:12px;letter-spacing:3px;color:#777;margin-bottom:25px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.project{border:1px solid #292929;padding:30px;min-height:180px;transition:.2s}
-.project:hover{border-color:#777;transform:translateY(-2px)}
-.project h2{font-size:25px;margin:0 0 12px}
-.project p{color:#999;line-height:1.6;margin:0 0 22px}
-.status{font-size:11px;letter-spacing:2px;color:#fff}
-.about{padding:40px 0 120px;max-width:650px}
-.about h2{font-size:32px;margin:0 0 15px}
-.about p{color:#999;line-height:1.7}
-footer{border-top:1px solid #222;padding:25px 0;color:#666;font-size:11px}
-@media(max-width:700px){
-  .grid{grid-template-columns:1fr}
-  .hero{min-height:520px}
-  .nav{gap:14px}
-  .wrap{padding:0 20px}
-}
+html,body{margin:0;padding:0;background:#05070c;font-family:"Times New Roman",Times,serif;color:#d7dce5;font-size:14px}
+body{background-image:linear-gradient(rgba(15,35,70,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(15,35,70,.22) 1px,transparent 1px);background-size:10px 10px}
+a{color:#66aaff;text-decoration:underline}
+a:visited{color:#a77cff}
+a:hover{color:#fff}
+.page{width:760px;margin:18px auto;background:#10151e;border:2px outset #48505c;box-shadow:3px 3px 0 #000}
+.topbar{background:#020611;color:#9abfff;padding:4px 7px;font:bold 13px Arial,Helvetica,sans-serif;border-bottom:1px solid #315b9a}
+.header{padding:10px 16px 8px;background:#0b111c;border-bottom:2px groove #394352}
+.brand{display:flex;align-items:center;gap:12px;min-height:48px}
+.brand img{width:170px;height:auto;display:block}
+.subtitle{font:12px "Courier New",monospace;margin-top:2px;color:#7789a5}
+.nav{margin-top:10px;background:#151c28;border:2px inset #333d4d;padding:5px;text-align:center;font:bold 12px Arial,Helvetica,sans-serif}
+.nav a{margin:0 12px}
+.content{padding:14px 18px 20px}
+.notice{background:#0a1220;border:1px solid #315b9a;padding:7px 9px;font:12px Arial,Helvetica,sans-serif;color:#b9d2f5}
+h1{font-size:24px;margin:15px 0 4px;color:#8abaff;text-shadow:1px 1px #000}
+h2{font-size:18px;margin:18px 0 5px;color:#7fb1f7;border-bottom:1px dotted #43536b;padding-bottom:2px}
+.intro{line-height:1.45}
+hr{border:0;border-top:1px dotted #43536b;height:1px;margin:15px 0}
+.project{border:2px outset #394352;background:#161d28;margin:10px 0;padding:9px}
+.project-title{font:bold 17px Arial,Helvetica,sans-serif;color:#8abaff}
+.project p{margin:5px 0;line-height:1.35}
+.status{display:inline-block;background:#020305;color:#39ff70;padding:2px 6px;font:11px "Courier New",monospace;border:1px solid #274b32}
+.small{font-size:12px;color:#9daabd}
+.counter{font:11px "Courier New",monospace;background:#000;color:#39ff70;padding:2px 5px;border:1px solid #26332a}
+.footer{border-top:2px groove #394352;background:#0b111c;text-align:center;padding:9px;font:11px Arial,Helvetica,sans-serif;color:#7789a5}
+.webring{margin-top:12px;text-align:center;font-size:12px}
+.box{border:2px outset #394352;background:#161d28;padding:10px;margin:12px 0}
+.box-title{background:#07142a;color:#8abaff;font:bold 13px Arial,Helvetica,sans-serif;padding:3px 6px;margin:-10px -10px 9px;border-bottom:1px solid #315b9a}
+table{border-collapse:collapse;width:100%;font-size:13px}
+td{border:1px solid #3b4656;padding:7px;vertical-align:top}
+td:first-child{width:28%;font-weight:bold;background:#111923;color:#9dc4fa}
+.phase{margin:10px 0;padding:8px;border-left:5px solid #315b9a;background:#111923}
+.phase b{color:#8abaff}
+.tagline{font-style:italic;color:#8d9bb0;margin-bottom:13px}
+@media(max-width:800px){.page{width:calc(100% - 12px);margin:6px auto}.nav a{margin:0 5px}.brand img{width:145px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <a class="brand" href="index.html">jujosmi</a>
-  <nav class="nav"><a href="#projects">PROJECTS</a><a href="#about">ABOUT</a></nav>
+<div class="page">
+<div class="topbar">Jujosmi Labs // Independent Software &amp; Experimental Technology</div>
+<header class="header">
+<div class="brand"><img src="jujosmi-logo-detailed.png" alt="Jujosmi Labs"></div>
+<div class="subtitle">~ building strange software since whenever ~</div>
+<nav class="nav"><a href="index.html">HOME</a> | <a href="#projects">PROJECTS</a> | <a href="#about">ABOUT</a> | <a href="cloneheroai.html">CLONE HERO AI</a></nav>
 </header>
-
-<section class="hero">
-  <img class="hero-logo" src="jujosmi-logo-detailed.png" alt="Jujosmi Labs logo">
-  <div class="tagline">Software &amp; experimental technology.</div>
-</section>
-
-<section class="projects" id="projects">
-  <div class="section-title">PROJECTS</div>
-  <div class="grid">
-    <a class="project" href="cloneheroai.html">
-      <h2>Clone Hero AI</h2>
-      <p>Audio analysis and machine learning for generating playable Clone Hero charts.</p>
-      <div class="status">IN DEVELOPMENT →</div>
-    </a>
-    <div class="project">
-      <h2>Trading AI</h2>
-      <p>Machine learning research for market analysis, strategy testing, and automated trading.</p>
-      <div class="status">PLANNED →</div>
-    </div>
-  </div>
-</section>
-
-<section class="about" id="about">
-  <div class="section-title">ABOUT</div>
-  <h2>The Need To Succeed</h2>
-  <p>Jujosmi Labs is an independent software and experimental technology studio focused on building unusual ideas and turning them into working systems.</p>
-</section>
-
-<footer>© 2026 Jujosmi Labs</footer>
-</div>
-</body>
-</html>
+<main class="content">
+<div class="notice"><b>*** WELCOME TO JUJOSMI LABS ***</b> &nbsp; You have entered the official home of an independent software lab.</div>
+<h1>Jujosmi Labs</h1>
+<p class="intro">Welcome to Jujosmi Labs. This is a small independent software and experimental technology studio where ideas get turned into actual programs. Browse around and check out the projects currently being built.</p>
+<hr>
+<h2 id="projects">:: PROJECTS ::</h2>
+<div class="project"><div class="project-title">[01] Clone Hero AI</div><p>Audio analysis and machine learning for generating playable Clone Hero charts from songs.</p><span class="status">IN DEVELOPMENT</span> &nbsp; <a href="cloneheroai.html">[ ENTER PROJECT ]</a></div>
+<div class="project"><div class="project-title">[02] Trading AI</div><p>Machine learning research for market analysis, strategy testing, and automated trading systems.</p><span class="status">PLANNED</span></div>
+<h2 id="about">:: ABOUT THIS SITE ::</h2>
+<p>Jujosmi Labs focuses on unusual ideas, software experiments, automation, artificial intelligence, and projects that are more fun to build than to explain.</p>
+<p class="small"><b>Site status:</b> <span class="counter">ONLINE</span> &nbsp; <b>Last update:</b> 2026 &nbsp; <b>Best viewed:</b> anywhere, preferably at 1024x768</p>
+<div class="webring">[ <a href="#projects">Projects</a> ] &nbsp; [ <a href="#about">About</a> ] &nbsp; [ <a href="cloneheroai.html">Clone Hero AI</a> ]<br><br><i>Thanks for visiting Jujosmi Labs!</i></div>
+</main>
+<footer class="footer">© 2026 Jujosmi Labs &nbsp; | &nbsp; This page is under construction.<br><span class="small">No frameworks. No fancy nonsense. Just software.</span></footer>
+</div></body></html>

@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clone Hero AI — Jujosmi Labs</title>
-<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clone Hero AI // Jujosmi Labs</title><link rel="icon" type="image/png" href="favicon.png">
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif}
-.wrap{max-width:1100px;margin:auto;padding:0 28px}
-a{color:inherit;text-decoration:none}
-header{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222}
-.brand{font-size:25px;font-weight:700;font-style:italic}
-.back{font-size:12px;letter-spacing:1.5px;color:#aaa}
-.back:hover{color:#fff}
-.hero{padding:120px 0 90px}
-.hero h1{font-size:clamp(48px,8vw,92px);letter-spacing:-5px;margin:0 0 20px}
-.hero p{max-width:700px;color:#999;font-size:18px;line-height:1.6}
-.section{padding:65px 0;border-top:1px solid #222}
-.title{font-size:11px;letter-spacing:3px;color:#777;margin-bottom:25px}
-.features,.roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{border:1px solid #292929;padding:28px;min-height:150px}
-.card h2{font-size:20px;margin:0 0 12px}
-.card p{color:#999;line-height:1.6;margin:0}
-.roadmap{grid-template-columns:repeat(4,1fr)}
-.step{border-top:2px solid #fff;padding-top:16px}
-.num{font-size:11px;letter-spacing:2px;color:#777}
-.step h3{margin:10px 0}
-.step p{color:#888;font-size:14px;line-height:1.5}
-footer{border-top:1px solid #222;padding:25px 0;color:#666;font-size:11px}
-@media(max-width:750px){
-  .features,.roadmap{grid-template-columns:1fr}
-  .wrap{padding:0 20px}
-  .hero{padding:90px 0 70px}
-}
+html,body{margin:0;padding:0;background:#05070c;font-family:"Times New Roman",Times,serif;color:#d7dce5;font-size:14px}
+body{background-image:linear-gradient(rgba(15,35,70,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(15,35,70,.22) 1px,transparent 1px);background-size:10px 10px}
+a{color:#66aaff;text-decoration:underline}
+a:visited{color:#a77cff}
+a:hover{color:#fff}
+.page{width:760px;margin:18px auto;background:#10151e;border:2px outset #48505c;box-shadow:3px 3px 0 #000}
+.topbar{background:#020611;color:#9abfff;padding:4px 7px;font:bold 13px Arial,Helvetica,sans-serif;border-bottom:1px solid #315b9a}
+.header{padding:10px 16px 8px;background:#0b111c;border-bottom:2px groove #394352}
+.brand{display:flex;align-items:center;gap:12px;min-height:48px}
+.brand img{width:170px;height:auto;display:block}
+.subtitle{font:12px "Courier New",monospace;margin-top:2px;color:#7789a5}
+.nav{margin-top:10px;background:#151c28;border:2px inset #333d4d;padding:5px;text-align:center;font:bold 12px Arial,Helvetica,sans-serif}
+.nav a{margin:0 12px}
+.content{padding:14px 18px 20px}
+.notice{background:#0a1220;border:1px solid #315b9a;padding:7px 9px;font:12px Arial,Helvetica,sans-serif;color:#b9d2f5}
+h1{font-size:24px;margin:15px 0 4px;color:#8abaff;text-shadow:1px 1px #000}
+h2{font-size:18px;margin:18px 0 5px;color:#7fb1f7;border-bottom:1px dotted #43536b;padding-bottom:2px}
+.intro{line-height:1.45}
+hr{border:0;border-top:1px dotted #43536b;height:1px;margin:15px 0}
+.project{border:2px outset #394352;background:#161d28;margin:10px 0;padding:9px}
+.project-title{font:bold 17px Arial,Helvetica,sans-serif;color:#8abaff}
+.project p{margin:5px 0;line-height:1.35}
+.status{display:inline-block;background:#020305;color:#39ff70;padding:2px 6px;font:11px "Courier New",monospace;border:1px solid #274b32}
+.small{font-size:12px;color:#9daabd}
+.counter{font:11px "Courier New",monospace;background:#000;color:#39ff70;padding:2px 5px;border:1px solid #26332a}
+.footer{border-top:2px groove #394352;background:#0b111c;text-align:center;padding:9px;font:11px Arial,Helvetica,sans-serif;color:#7789a5}
+.webring{margin-top:12px;text-align:center;font-size:12px}
+.box{border:2px outset #394352;background:#161d28;padding:10px;margin:12px 0}
+.box-title{background:#07142a;color:#8abaff;font:bold 13px Arial,Helvetica,sans-serif;padding:3px 6px;margin:-10px -10px 9px;border-bottom:1px solid #315b9a}
+table{border-collapse:collapse;width:100%;font-size:13px}
+td{border:1px solid #3b4656;padding:7px;vertical-align:top}
+td:first-child{width:28%;font-weight:bold;background:#111923;color:#9dc4fa}
+.phase{margin:10px 0;padding:8px;border-left:5px solid #315b9a;background:#111923}
+.phase b{color:#8abaff}
+.tagline{font-style:italic;color:#8d9bb0;margin-bottom:13px}
+@media(max-width:800px){.page{width:calc(100% - 12px);margin:6px auto}.nav a{margin:0 5px}.brand img{width:145px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <a class="brand" href="index.html">jujosmi</a>
-  <a class="back" href="index.html">← BACK TO LABS</a>
+<div class="page">
+<div class="topbar">Jujosmi Labs // PROJECT FILE: CLONEHEROAI</div>
+<header class="header">
+<div class="brand"><img src="jujosmi-logo-detailed.png" alt="Jujosmi Labs"></div>
+<nav class="nav"><a href="index.html">HOME</a> | <a href="index.html#projects">PROJECTS</a> | <a href="cloneheroai.html">CLONE HERO AI</a></nav>
 </header>
-<section class="hero">
-  <h1>Clone Hero AI</h1>
-  <p>Turning songs into playable Clone Hero charts using audio analysis, pattern recognition, and machine learning.</p>
-</section>
-<section class="section">
-  <div class="title">WHAT IS IT?</div>
-  <div class="features">
-    <div class="card"><h2>Audio Analysis</h2><p>Break songs down into timing, beats, rhythm, and guitar-focused information.</p></div>
-    <div class="card"><h2>Chart Generation</h2><p>Convert musical information into playable five-fret Clone Hero note patterns.</p></div>
-    <div class="card"><h2>AI Improvement</h2><p>Use data and machine learning to improve chart quality and musicality.</p></div>
-  </div>
-</section>
-<section class="section">
-  <div class="title">DEVELOPMENT</div>
-  <div class="roadmap">
-    <div class="step"><div class="num">PHASE 01</div><h3>Audio → Data</h3><p>Extract useful musical information from songs.</p></div>
-    <div class="step"><div class="num">PHASE 02</div><h3>Data → Chart</h3><p>Generate playable note charts from analyzed audio.</p></div>
-    <div class="step"><div class="num">PHASE 03</div><h3>AI Charting</h3><p>Train models to recognize patterns and chart music intelligently.</p></div>
-    <div class="step"><div class="num">PHASE 04</div><h3>Usable Release</h3><p>Turn the system into a simple tool anyone can use.</p></div>
-  </div>
-</section>
-<footer>© 2026 Jujosmi Labs</footer>
+<main class="content">
+<h1>Clone Hero AI</h1><div class="tagline">An experimental AI system for turning songs into playable Clone Hero charts.</div>
+<span class="status">STATUS: IN DEVELOPMENT</span>
+<div class="box"><div class="box-title">:: PROJECT SUMMARY ::</div>Clone Hero AI analyzes music, identifies useful guitar information, and attempts to convert that information into playable five-fret Clone Hero charts. The long-term goal is a system that understands guitar parts instead of simply guessing notes from raw audio.</div>
+<hr>
+<div class="box"><div class="box-title">:: CURRENT CAPABILITIES / GOALS ::</div>
+<table><tr><td>Audio Analysis</td><td>Extract timing, beats, rhythm and guitar-focused information from songs.</td></tr>
+<tr><td>Guitar Detection</td><td>Separate guitar information from drums, bass, vocals and other instruments.</td></tr>
+<tr><td>Chart Generation</td><td>Turn musical events into five-fret Clone Hero note patterns.</td></tr>
+<tr><td>AI Learning</td><td>Use training data and machine learning to improve chart quality and musicality.</td></tr></table></div>
+<div class="box"><div class="box-title">:: DEVELOPMENT ROADMAP ::</div>
+<div class="phase"><b>PHASE 01 — AUDIO → DATA</b><br>Extract useful musical information from songs.</div>
+<div class="phase"><b>PHASE 02 — DATA → CHART</b><br>Generate playable note charts from analyzed audio.</div>
+<div class="phase"><b>PHASE 03 — AI CHARTING</b><br>Train models to recognize guitar patterns, techniques, rhythms and playing styles.</div>
+<div class="phase"><b>PHASE 04 — USABLE RELEASE</b><br>Turn the system into a practical tool that other Clone Hero players can use.</div>
 </div>
-</body>
-</html>
+<p><a href="index.html">← Return to Jujosmi Labs home</a></p>
+</main>
+<footer class="footer">© 2026 Jujosmi Labs &nbsp; | &nbsp; Clone Hero AI Project Page</footer>
+</div></body></html>
