@@ -1,74 +1,304 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>GuitarAI -- Jujosmi Labs</title><link rel="icon" type="image/png" href="favicon.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jujosmi Labs - GuitarAI</title>
+<meta name="description" content="CloneHeroAI — turn guitar audio into playable Clone Hero charts.">
 <style>
-html,body{margin:0;padding:0;background:#05070c;font-family:"Times New Roman",Times,serif;color:#d7dce5;font-size:14px}
-body{background-image:linear-gradient(rgba(15,35,70,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(15,35,70,.22) 1px,transparent 1px);background-size:10px 10px}
-a{color:#66aaff;text-decoration:underline}
-a:visited{color:#a77cff}
-a:hover{color:#fff}
-.page{width:760px;margin:18px auto;background:#10151e;border:2px outset #48505c;box-shadow:3px 3px 0 #000}
-.topbar{background:#020611;color:#9abfff;padding:4px 7px;font:bold 13px Arial,Helvetica,sans-serif;border-bottom:1px solid #315b9a}
-.header{padding:10px 16px 8px;background:#0b111c;border-bottom:2px groove #394352}
-.brand{display:flex;align-items:center;gap:12px;min-height:48px}
-.brand img{width:170px;height:auto;display:block}
-.subtitle{font:12px "Courier New",monospace;margin-top:2px;color:#7789a5}
-.nav{margin-top:10px;background:#151c28;border:2px inset #333d4d;padding:5px;text-align:center;font:bold 12px Arial,Helvetica,sans-serif}
-.nav a{margin:0 12px}
-.content{padding:14px 18px 20px}
-.notice{background:#0a1220;border:1px solid #315b9a;padding:7px 9px;font:12px Arial,Helvetica,sans-serif;color:#b9d2f5}
-h1{font-size:24px;margin:15px 0 4px;color:#8abaff;text-shadow:1px 1px #000}
-h2{font-size:18px;margin:18px 0 5px;color:#7fb1f7;border-bottom:1px dotted #43536b;padding-bottom:2px}
-.intro{line-height:1.45}
-hr{border:0;border-top:1px dotted #43536b;height:1px;margin:15px 0}
-.project{border:2px outset #394352;background:#161d28;margin:10px 0;padding:9px}
-.project-title{font:bold 17px Arial,Helvetica,sans-serif;color:#8abaff}
-.project p{margin:5px 0;line-height:1.35}
-.status{display:inline-block;background:#020305;color:#39ff70;padding:2px 6px;font:11px "Courier New",monospace;border:1px solid #274b32}
-.small{font-size:12px;color:#9daabd}
-.counter{font:11px "Courier New",monospace;background:#000;color:#39ff70;padding:2px 5px;border:1px solid #26332a}
-.footer{border-top:2px groove #394352;background:#0b111c;text-align:center;padding:9px;font:11px Arial,Helvetica,sans-serif;color:#7789a5}
-.webring{margin-top:12px;text-align:center;font-size:12px}
-.box{border:2px outset #394352;background:#161d28;padding:10px;margin:12px 0}
-.box-title{background:#07142a;color:#8abaff;font:bold 13px Arial,Helvetica,sans-serif;padding:3px 6px;margin:-10px -10px 9px;border-bottom:1px solid #315b9a}
-table{border-collapse:collapse;width:100%;font-size:13px}
-td{border:1px solid #3b4656;padding:7px;vertical-align:top}
-td:first-child{width:28%;font-weight:bold;background:#111923;color:#9dc4fa}
-.phase{margin:10px 0;padding:8px;border-left:5px solid #315b9a;background:#111923}
-.phase b{color:#8abaff}
-.tagline{font-style:italic;color:#8d9bb0;margin-bottom:13px}
-@media(max-width:800px){.page{width:calc(100% - 12px);margin:6px auto}.nav a{margin:0 5px}.brand img{width:145px}}
+:root{
+  --blue:#1687ff;--cyan:#4bc1ff;--red:#ff281b;--orange:#ff7a00;
+  --bg:#020307;--white:#f5f7fb;--muted:#9aa6b5;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.08;background-image:radial-gradient(#fff .6px,transparent .7px);background-size:4px 4px;mix-blend-mode:screen}
+nav{position:fixed;z-index:100;left:0;right:0;top:0;height:62px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;background:rgba(2,3,7,.35);backdrop-filter:blur(18px);border-bottom:1px solid #ffffff12}
+.logo{display:flex;align-items:center;text-decoration:none;height:62px}.logo img{width:150px;height:auto;display:block}.logo:hover img{opacity:.9}
+.navlinks{display:flex;gap:28px;font-size:12px;color:#b8c0cb}
+.navlinks a:hover{color:#fff}
+.pill{padding:10px 17px;border:1px solid #ffffff30;border-radius:99px;font-size:12px;font-weight:800}
+
+#experience{height:520vh;position:relative}
+.sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:#020307}
+.scene{position:absolute;inset:0}
+.energy{
+  position:absolute;inset:-20%;
+  background:
+    radial-gradient(circle at 70% 42%,#087cff88 0,transparent 24%),
+    radial-gradient(circle at 30% 65%,#087cff30 0,transparent 28%),
+    conic-gradient(from 120deg at 50% 50%,#031025, #087cff33, #020307,#087cff22,#031025);
+  filter:saturate(1.25);
+  transform:scale(1.1);
+}
+.energy:before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(125deg,transparent 0 70px,#1590ff13 71px 74px);
+  transform:rotate(var(--rot,0deg));
+}
+.stars{position:absolute;inset:0;background-image:radial-gradient(circle,#fff 0 1px,transparent 1.5px);background-size:97px 97px;opacity:.32}
+.rocky-bg{
+  position:absolute;z-index:4;inset:0;
+  background-image:
+    linear-gradient(90deg,rgba(2,3,7,.20),transparent 28%,transparent 72%,rgba(2,3,7,.20)),
+    linear-gradient(180deg,rgba(2,3,7,.10),transparent 22%,transparent 78%,rgba(2,3,7,.22)),
+    url("rocky-hero.png");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  transform:scale(1.01);
+  will-change:transform,filter,opacity;
+  filter:saturate(1.08) contrast(1.03);
+  transition:filter .2s linear;
+}
+.rocky-bg:after{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 50% 50%,transparent 42%,rgba(2,3,7,.18) 100%),
+    linear-gradient(180deg,rgba(2,3,7,.08),transparent 18%,transparent 82%,rgba(2,3,7,.20));
+  pointer-events:none;
+}
+.hero-copy{
+  position:absolute;z-index:6;left:7vw;top:20vh;width:min(620px,82vw);
+  will-change:transform,opacity;
+}
+.kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#54b9ff;font-weight:900}
+.hero-copy h1{font-size:clamp(58px,9vw,135px);line-height:.77;letter-spacing:-.08em;margin:18px 0 25px;font-style:italic}
+.hero-copy p{font-size:17px;line-height:1.6;color:#b7c0cc;max-width:510px}
+.scrollhint{margin-top:35px;color:#7f8b99;font-size:10px;letter-spacing:.28em;text-transform:uppercase}
+.scrollhint span{display:block;width:1px;height:50px;background:linear-gradient(#4bb8ff,transparent);margin:12px 0}
+
+.message{
+  position:absolute;z-index:8;left:7vw;top:20vh;width:86vw;
+  opacity:0;transform:translateY(35px);will-change:transform,opacity;
+}
+.message .num{font-size:11px;letter-spacing:.3em;color:#4db7ff;font-weight:900}
+.message h2{font-size:clamp(52px,8vw,125px);line-height:.82;letter-spacing:-.075em;margin:15px 0}
+.message p{color:#aeb8c5;max-width:570px;font-size:18px;line-height:1.6}
+
+.guitar-glow{
+  position:absolute;z-index:3;left:50%;top:53%;width:72vw;height:18px;
+  background:linear-gradient(90deg,transparent,#1687ff,#fff,#1687ff,transparent);
+  box-shadow:0 0 60px #1687ff;
+  transform:translate(-50%,-50%) rotate(-35deg) scaleX(.1);
+  opacity:0;will-change:transform,opacity;
+}
+
+.highway{
+  position:absolute;z-index:5;left:50%;top:55%;width:min(680px,80vw);height:82vh;
+  transform:translate(-50%,-50%) perspective(900px) rotateX(55deg) scale(.15);
+  opacity:0;transform-origin:center bottom;will-change:transform,opacity;
+  background:linear-gradient(90deg,#06101d,#020306 20%,#020306 80%,#06101d);
+  border-left:1px solid #ffffff20;border-right:1px solid #ffffff20;
+}
+.highway .lane{position:absolute;top:0;bottom:0;width:1px;background:#ffffff18}
+.highway .l1{left:10%}.highway .l2{left:30%}.highway .l3{left:50%}.highway .l4{left:70%}.highway .l5{left:90%}
+.gem{position:absolute;width:68px;height:30px;border-radius:8px;box-shadow:0 0 28px currentColor}
+.g1{left:7%;top:13%;background:#27df5a;color:#27df5a}.g2{left:27%;top:31%;background:#ff3030;color:#ff3030}
+.g3{left:47%;top:51%;background:#ffe52c;color:#ffe52c}.g4{left:67%;top:24%;background:#2498ff;color:#2498ff}
+.g5{left:87%;top:64%;background:#ff8b18;color:#ff8b18}
+
+.pipeline{
+  position:absolute;z-index:9;left:7vw;right:7vw;bottom:13vh;
+  display:flex;justify-content:space-between;align-items:flex-end;opacity:0;transform:translateY(30px);
+}
+.pipe{font-size:clamp(22px,3vw,42px);font-weight:950;letter-spacing:-.05em}
+.pipe small{display:block;font-size:9px;letter-spacing:.25em;color:#4db7ff;margin-bottom:8px}
+.pipe.active{color:#fff;text-shadow:0 0 25px #1687ff}
+.connector{height:1px;flex:1;margin:0 28px 18px;background:linear-gradient(90deg,#1687ff,transparent)}
+
+.final{
+  position:absolute;z-index:10;inset:0;display:grid;place-items:center;text-align:center;
+  opacity:0;transform:scale(.96);pointer-events:none;
+}
+.final h2{font-size:clamp(65px,11vw,165px);line-height:.78;letter-spacing:-.085em;margin:0;font-style:italic}
+.final p{color:#aeb8c5;font-size:18px;margin:30px auto;max-width:520px}
+.final .btn{display:inline-flex;padding:14px 25px;border-radius:999px;background:#fff;color:#020307;font-weight:900}
+
+.below{min-height:100vh;padding:140px 7vw;background:#050608;display:grid;align-items:center}
+.below-inner{width:min(1150px,100%);margin:auto}
+.eyebrow{color:#48aaff;font-size:11px;letter-spacing:.3em;font-weight:900;text-transform:uppercase}
+.below h2{font-size:clamp(50px,7vw,105px);line-height:.88;letter-spacing:-.07em;margin:15px 0 25px}
+.below p{color:#aab4c0;max-width:680px;font-size:18px;line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#242a32;margin-top:55px}
+.card{background:#090b0f;padding:38px;min-height:230px}.card b{font-size:26px}.card p{font-size:14px;margin-top:22px}
+
+footer{padding:50px 7vw;border-top:1px solid #1b2028;color:#707a88;display:flex;justify-content:space-between;font-size:13px}
+@media(max-width:800px){
+  .navlinks{display:none}.rocky-bg{
+  position:absolute;z-index:4;inset:0;
+  background-image:
+    linear-gradient(90deg,rgba(2,3,7,.20),transparent 28%,transparent 72%,rgba(2,3,7,.20)),
+    linear-gradient(180deg,rgba(2,3,7,.10),transparent 22%,transparent 78%,rgba(2,3,7,.22)),
+    url("rocky-hero.png");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  transform:scale(1.01);
+  will-change:transform,filter,opacity;
+  filter:saturate(1.08) contrast(1.03);
+  transition:filter .2s linear;
+}
+.rocky-bg:after{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 50% 50%,transparent 42%,rgba(2,3,7,.18) 100%),
+    linear-gradient(180deg,rgba(2,3,7,.08),transparent 18%,transparent 82%,rgba(2,3,7,.20));
+  pointer-events:none;
+}
+  .message{top:17vh}.pipeline{bottom:8vh;gap:10px}.connector{margin:0 8px}
+  .cards{grid-template-columns:1fr}.highway{width:85vw}
+}
 </style>
 </head>
 <body>
-<div class="page">
-<div class="topbar">Jujosmi Labs // PROJECT FILE: CLONEHEROAI</div>
-<header class="header">
-<div class="brand"><img src="jujosmi-logo-detailed.png" alt="Jujosmi Labs"></div>
-<nav class="nav"><a href="index.html">HOME</a> | <a href="index.html#projects">PROJECTS</a> | <a href="cloneheroai.html">CLONE HERO AI</a></nav>
-</header>
-<main class="content">
-<h1>Clone Hero AI</h1><div class="tagline">An experimental AI system for turning songs into playable Clone Hero charts.</div>
-<span class="status">STATUS: IN DEVELOPMENT</span>
 
-<div class="box"><div class="box-title">-- PROJECT SUMMARY --</div>Clone Hero AI analyzes music, identifies useful guitar information, and attempts to convert that information into playable five-fret Clone Hero charts. The long-term goal is a system that understands guitar parts instead of simply guessing notes from raw audio, or spitting random patterns without correlation.</div>
-<hr>
-<div class="box"><div class="box-title">-- CURRENT UPDATE -- <span style="color: #ff3333;" class="status">UNUSABLE STAGE</span> </div>  CloneHeroAI is in the Guitar Intelligence phase. v0.6 significantly improved pitch recognition, and v0.7 is now focused on turning that understanding into accurate note events before chart composition begins. </div>
-<hr>
-<div class="box"><div class="box-title">:: CURRENT CAPABILITIES / GOALS ::</div>
-<table><tr><td>Audio Analysis</td><td>Extract timing, beats, rhythm and guitar-focused information from songs.</td></tr>
-<tr><td>Guitar Detection</td><td>Separate guitar information from drums, bass, vocals and other instruments.</td></tr>
-<tr><td>Chart Generation</td><td>Turn musical events into five-fret Clone Hero note patterns.</td></tr>
-<tr><td>AI Learning</td><td>Use training data and machine learning to improve chart quality and musicality.</td></tr></table></div>
-<div class="box"><div class="box-title">:: DEVELOPMENT ROADMAP ::</div>
-<div class="phase"><b>— AUDIO → DATA</b><br>Extract useful musical information from songs.</div>
-<div class="phase"><b>— DATA → CHART</b><br>Generate playable note charts from analyzed audio.</div>
-<div class="phase"><b>— AI CHARTING</b><br>Train models to recognize guitar patterns, techniques, rhythms and playing styles.</div>
-<div class="phase"><b>— USABLE RELEASE</b><br>Turn the system into a practical tool that other Clone Hero players can use.</div>
+<nav><a class="logo brand-home" href="index.html" aria-label="Jujosmi Labs home"><img src="jujosmi-logo-detailed.png" alt="Jujosmi Labs"></a><div class="navlinks"><a href="#experience">Experience</a><a href="#about">Technology</a><a href="#download">Download</a></div><a class="pill" href="#download">Get Started</a></nav>
+
+<section id="experience">
+<div class="sticky">
+  <div class="energy"></div><div class="stars"></div>
+
+  <div class="hero-copy">
+    <div class="kicker">AI-powered chart generation</div>
+    <h1>ANY SONG.<br>YOUR CHART.</h1>
+    <p>Scroll into the process. Watch the music transform from performance into a playable Clone Hero chart.</p>
+    <div class="scrollhint">Scroll to begin<span></span></div>
+  </div>
+
+  <div class="rocky-bg" aria-label="Rocky playing guitar"></div>
+
+  <div class="guitar-glow"></div>
+
+  <div class="message msg1">
+    <div class="num">01 — THE GUITAR</div>
+    <h2>HEAR<br>THE GUITAR.</h2>
+    <p>CloneHeroAI starts with the performance itself. The guitar is pulled out of the chaos so the system can focus on what the player is actually doing.</p>
+  </div>
+
+  <div class="message msg2">
+    <div class="num">02 — THE MUSIC</div>
+    <h2>UNDERSTAND<br>THE PLAYING.</h2>
+    <p>Notes. Chords. Rhythm. Timing. Technique. The performance becomes information the charting system can work with.</p>
+  </div>
+
+  <div class="highway">
+    <div class="lane l1"></div><div class="lane l2"></div><div class="lane l3"></div><div class="lane l4"></div><div class="lane l5"></div>
+    <div class="gem g1"></div><div class="gem g2"></div><div class="gem g3"></div><div class="gem g4"></div><div class="gem g5"></div>
+  </div>
+
+  <div class="pipeline">
+    <div class="pipe active"><small>01</small>ISOLATE</div><div class="connector"></div>
+    <div class="pipe"><small>02</small>ANALYZE</div><div class="connector"></div>
+    <div class="pipe"><small>03</small>GENERATE</div>
+  </div>
+
+  <div class="final">
+    <div>
+      <div class="eyebrow">03 — The result</div>
+      <h2>PLAY<br>THE SONG.</h2>
+      <p>The final step is simple: turn the understanding back into something a player can pick up and rock out to.</p>
+      <a class="btn" href="#download">Explore CloneHeroAI</a>
+    </div>
+  </div>
 </div>
-<p><a href="index.html">← Return to Jujosmi Labs home</a></p>
-</main>
-<footer class="footer">© 2026 Jujosmi Labs &nbsp; | &nbsp; Clone Hero AI Project Page</footer>
-</div></body></html>
+</section>
+
+<section class="below" id="about">
+<div class="below-inner">
+<div class="eyebrow">After the experience</div>
+<h2>BUILT AROUND<br>THE PLAYER.</h2>
+<p>Once the morphing introduction ends, the site becomes a normal product experience. This is where documentation, downloads, model information, examples, community links, and technical details can live without interrupting the visual story.</p>
+<div class="cards">
+<div class="card"><b>Isolate</b><p>Focus the pipeline on guitar instead of treating the entire mix as guitar.</p></div>
+<div class="card"><b>Analyze</b><p>Understand the musical performance before deciding how it should become a chart.</p></div>
+<div class="card"><b>Generate</b><p>Produce a playable five-fret chart from the model's understanding.</p></div>
+</div>
+</div>
+</section>
+
+<section class="below" id="download" style="min-height:70vh;text-align:center">
+<div class="below-inner">
+<div class="eyebrow">CloneHeroAI</div>
+<h2>READY TO ROCK?</h2>
+<p style="margin-left:auto;margin-right:auto">CloneHeroAI is currently in development.</p>
+<a class="pill" style="display:inline-block;background:#fff;color:#020307;border:0;padding:14px 25px" href="#">Download</a>
+</div>
+</section>
+
+<footer><span>© 2026 Jujosmi Labs</span><span>CloneHeroAI — In Development</span></footer>
+
+<script>
+const exp=document.querySelector('#experience');
+const rocky=document.querySelector('.rocky-bg');
+const hero=document.querySelector('.hero-copy');
+const energy=document.querySelector('.energy');
+const glow=document.querySelector('.guitar-glow');
+const highway=document.querySelector('.highway');
+const msg1=document.querySelector('.msg1');
+const msg2=document.querySelector('.msg2');
+const pipe=document.querySelector('.pipeline');
+const final=document.querySelector('.final');
+
+function clamp(v,a=0,b=1){return Math.max(a,Math.min(b,v))}
+function range(p,a,b){return clamp((p-a)/(b-a))}
+function ease(v){return v*v*(3-2*v)}
+
+function update(){
+  const r=exp.getBoundingClientRect();
+  const total=exp.offsetHeight-innerHeight;
+  const p=clamp(-r.top/total);
+
+  // 0 -> .22: hero breathes, Rocky is prominent
+  const heroOut=ease(range(p,0,.22));
+  hero.style.opacity=1-heroOut;
+  hero.style.transform=`translateY(${-heroOut*70}px) scale(${1-heroOut*.04})`;
+
+  // Rocky grows and then moves "into" the screen.
+  const zoom=ease(range(p,.05,.46));
+  const x=zoom*12;
+  const y=zoom*4;
+  rocky.style.transform=`scale(${1.01+zoom*.75}) translate(${x*.22}vw,${y*.12}vh) rotate(${-zoom*2}deg)`;
+  rocky.style.opacity=1-ease(range(p,.42,.58));
+  rocky.style.filter=`saturate(${1.08+zoom*.22}) contrast(${1.03+zoom*.10}) brightness(${1+zoom*.06})`;
+
+  // Blue energy tightens around the transformation.
+  energy.style.transform=`scale(${1.1+zoom*.28}) rotate(${p*18}deg)`;
+  energy.style.filter=`saturate(${1.25+zoom*.7}) brightness(${1+zoom*.18})`;
+
+  // Guitar becomes a luminous horizontal "signal".
+  const g=ease(range(p,.27,.48));
+  glow.style.opacity=g;
+  glow.style.transform=`translate(-50%,-50%) rotate(${-35+g*35}deg) scaleX(${.1+g*1.2})`;
+
+  // Messaging appears between transformations.
+  const a=ease(range(p,.25,.38)), b=ease(range(p,.39,.54));
+  msg1.style.opacity=a*(1-b);
+  msg1.style.transform=`translateY(${35-35*a+25*b}px)`;
+  msg2.style.opacity=b*(1-ease(range(p,.55,.64)));
+  msg2.style.transform=`translateY(${35-35*b}px)`;
+
+  // Fretboard grows out of the center.
+  const h=ease(range(p,.48,.68));
+  highway.style.opacity=h;
+  highway.style.transform=`translate(-50%,-50%) perspective(900px) rotateX(${55-42*h}deg) scale(${.15+h*1.02})`;
+
+  // Pipeline appears after the highway.
+  const pi=ease(range(p,.66,.78));
+  pipe.style.opacity=pi;
+  pipe.style.transform=`translateY(${30-30*pi}px)`;
+
+  // Final message takes over.
+  const f=ease(range(p,.78,.94));
+  final.style.opacity=f;
+  final.style.transform=`scale(${.96+.04*f})`;
+}
+addEventListener('scroll',update,{passive:true});
+addEventListener('resize',update);
+update();
+</script>
+</body>
+</html>
