@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CloneHeroAI Development Log -- Jujosmi Labs</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+html,body{margin:0;padding:0;background:#05070c;font-family:"Times New Roman",Times,serif;color:#d7dce5;font-size:14px}
+body{background-image:linear-gradient(rgba(15,35,70,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(15,35,70,.22) 1px,transparent 1px);background-size:10px 10px}
+a{color:#66aaff;text-decoration:underline}
+a:visited{color:#a77cff}
+a:hover{color:#fff}
+.page{width:760px;margin:18px auto;background:#10151e;border:2px outset #48505c;box-shadow:3px 3px 0 #000}
+.topbar{background:#020611;color:#9abfff;padding:4px 7px;font:bold 13px Arial,Helvetica,sans-serif;border-bottom:1px solid #315b9a}
+.header{padding:10px 16px 8px;background:#0b111c;border-bottom:2px groove #394352}
+.brand{display:flex;align-items:center;gap:12px;min-height:48px}
+.brand img{width:170px;height:auto;display:block}
+.brand-home{display:block;text-decoration:none}
+.brand-home:hover{opacity:.9}
+.nav{margin-top:10px;background:#151c28;border:2px inset #333d4d;padding:5px;text-align:center;font:bold 12px Arial,Helvetica,sans-serif}
+.nav a{margin:0 12px}
+.content{padding:14px 18px 24px}
+.notice{background:#0a1220;border:1px solid #315b9a;padding:7px 9px;font:12px Arial,Helvetica,sans-serif;color:#b9d2f5}
+h1{font-size:27px;margin:15px 0 3px;color:#8abaff;text-shadow:1px 1px #000}
+h2{font-size:20px;margin:22px 0 6px;color:#7fb1f7;border-bottom:1px dotted #43536b;padding-bottom:3px}
+h3{font-size:16px;color:#8abaff;margin:0 0 7px}
+.intro{line-height:1.55}
+.meta{font:11px "Courier New",monospace;color:#7789a5;margin-bottom:15px}
+hr{border:0;border-top:1px dotted #43536b;height:1px;margin:18px 0}
+.post{border:2px outset #394352;background:#161d28;margin:15px 0;padding:12px}
+.post-head{background:#07142a;margin:-12px -12px 10px;padding:7px 9px;border-bottom:1px solid #315b9a}
+.post-number{font:bold 12px Arial,Helvetica,sans-serif;color:#4db7ff;letter-spacing:.08em}
+.post-date{float:right;font:11px "Courier New",monospace;color:#7789a5}
+.post p{line-height:1.55;margin:8px 0}
+.post ul{line-height:1.55;margin-top:8px}
+.tag{display:inline-block;background:#020305;color:#39ff70;padding:2px 6px;font:11px "Courier New",monospace;border:1px solid #274b32;margin-top:4px}
+.problem{color:#ff9b9b}
+.success{color:#8dffad}
+.codebox{background:#05070a;border:1px inset #3b4656;padding:9px;font:12px "Courier New",monospace;color:#b9d2f5;overflow:auto}
+.timeline{border-left:4px solid #315b9a;margin:15px 0;padding-left:14px}
+.timeline .item{margin:0 0 14px}
+.timeline b{color:#8abaff}
+.box{border:2px outset #394352;background:#161d28;padding:10px;margin:15px 0}
+.box-title{background:#07142a;color:#8abaff;font:bold 13px Arial,Helvetica,sans-serif;padding:3px 6px;margin:-10px -10px 9px;border-bottom:1px solid #315b9a}
+.status{display:inline-block;background:#020305;color:#39ff70;padding:2px 6px;font:11px "Courier New",monospace;border:1px solid #274b32}
+.footer{border-top:2px groove #394352;background:#0b111c;text-align:center;padding:9px;font:11px Arial,Helvetica,sans-serif;color:#7789a5}
+.small{font-size:12px;color:#9daabd}
+@media(max-width:800px){
+  .page{width:calc(100% - 12px);margin:6px auto}
+  .nav a{margin:0 5px}
+  .brand img{width:145px}
+  .post-date{float:none;display:block;margin-top:3px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="topbar">Jujosmi Labs // PROJECT BLOG: CLONEHEROAI</div>
+
+<header class="header">
+  <div class="brand">
+    <a href="index.html" class="brand-home" aria-label="Jujosmi Labs home">
+      <img src="jujosmi-logo-detailed.png" alt="Jujosmi Labs">
+    </a>
+  </div>
+  <nav class="nav">
+    <a href="index.html">HOME</a> |
+    <a href="index.html#projects">PROJECTS</a> |
+    <a href="cloneheroai.html">CLONE HERO AI</a>
+  </nav>
+</header>
+
+<main class="content">
+
+<div class="notice"><b>-- CLONEHEROAI DEVELOPMENT LOG --</b> &nbsp; Building an AI system that understands guitar before it tries to chart it.</div>
+
+<h1>CloneHeroAI: From Idea to Guitar Intelligence</h1>
+<div class="meta">Jujosmi Labs / PROJECT BLOG / STATUS: IN DEVELOPMENT</div>
+
+<p class="intro">
+CloneHeroAI started as an experiment: could machine learning take a song file and turn the guitar performance into a playable five-fret Clone Hero chart?
+The answer turned out to be much harder than simply detecting sound and placing notes. The project has gradually become a guitar-understanding problem:
+separate the guitar from the rest of the song, understand what is being played, identify timing and musical events, and only then turn that information into a chart.
+</p>
+
+<div class="box">
+  <div class="box-title">-- WHERE THE PROJECT IS NOW --</div>
+  <b>Current phase: Guitar Intelligence</b><br><br>
+  v0.6 significantly improved pitch recognition. v0.7 is focused on turning that understanding into accurate note events before chart composition begins.
+  The current system is still considered <span class="status">UNUSABLE STAGE</span> and is being developed toward a practical release.
+</div>
+
+<hr>
+
+<h2>THE DEVELOPMENT STORY</h2>
+
+<div class="timeline">
+  <div class="item"><b>Stage 01 — The Original Idea</b><br>
+  Start with a song and try to automatically create a playable Clone Hero chart.</div>
+
+  <div class="item"><b>Stage 02 — The First Charting Experiments</b><br>
+  Early approaches could produce note patterns, but the results did not reliably represent guitar playing.</div>
+
+  <div class="item"><b>Stage 03 — Audio2Chart Baseline</b><br>
+  A baseline charting approach established that automatic chart generation was possible, but exposed major timing and instrument-recognition problems.</div>
+
+  <div class="item"><b>Stage 04 — The "Why Does This Sound Like Drums?" Problem</b><br>
+  The generated charts often looked more like rhythmic/percussive patterns than guitar parts. This changed the direction of the project.</div>
+
+  <div class="item"><b>Stage 05 — Guitar Isolation</b><br>
+  The pipeline began moving toward separating the guitar stem before AI charting, so the model could concentrate on guitar instead of the full mix.</div>
+
+  <div class="item"><b>Stage 06 — Dataset & Training</b><br>
+  Paired training data and harder negative examples became important: the model needs to recognize guitar while rejecting drums, bass, vocals and other sounds.</div>
+
+  <div class="item"><b>Stage 07 — Guitar Intelligence v0.5–v0.6</b><br>
+  Development shifted from simply generating notes toward recognizing pitch, onsets, polyphony and guitar-specific information.</div>
+
+  <div class="item"><b>Stage 08 — v0.7: Accurate Note Events</b><br>
+  The current focus is turning the model's guitar understanding into reliable note events before chart composition.</div>
+
+  <div class="item"><b>Stage 09 — Playable Chart Generation</b><br>
+  The next major goal is converting accurate events into musical five-fret charts that actually feel good to play.</div>
+
+  <div class="item"><b>Stage 10 — Usable Release</b><br>
+  Package the system into something other Clone Hero players can actually use, test it on unseen songs, and improve it from real-world results.</div>
+</div>
+
+<hr>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 01 — THE IDEA</span>
+    <span class="post-date">STAGE 01</span>
+  </div>
+  <h3>What if the chart could make itself?</h3>
+  <p>
+  The project began with a simple goal: take a song file and automatically turn the guitar part into a playable Clone Hero chart.
+  Instead of manually authoring every note, the system would listen to the music and attempt to understand what the guitarist played.
+  </p>
+  <p>
+  That immediately created a much bigger problem. A song is not just guitar. It contains drums, bass, vocals, synths, effects and other sounds.
+  If the system cannot tell those things apart, it cannot reliably know which sounds should become guitar notes.
+  </p>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 02 — EARLY CHARTING</span>
+    <span class="post-date">STAGE 02</span>
+  </div>
+  <h3>The first attempts could make notes — but not necessarily the right notes.</h3>
+  <p>
+  Early experiments demonstrated the basic possibility of automatic chart generation. The system could output note patterns,
+  but generating something that exists is very different from generating something that matches the guitarist.
+  </p>
+  <p>
+  The important lesson from this stage was that chart generation could not be treated as a simple pattern-making problem.
+  The system needed information about the actual performance first.
+  </p>
+  <span class="tag">LESSON: GENERATION IS NOT UNDERSTANDING</span>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 03 — AUDIO2CHART</span>
+    <span class="post-date">STAGE 03</span>
+  </div>
+  <h3>Establishing a baseline.</h3>
+  <p>
+  Audio2Chart became an important baseline for the project. It showed that a pipeline could go from audio toward automatically produced chart data,
+  but it also made the weaknesses visible.
+  </p>
+  <p>
+  Timing was not good enough, and the generated patterns did not consistently behave like guitar charts. Having a working baseline was useful because
+  it gave the project something concrete to compare against rather than trying to improve an undefined idea.
+  </p>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 04 — THE DRUM-LIKE CHART PROBLEM</span>
+    <span class="post-date">STAGE 04</span>
+  </div>
+  <h3>One of the biggest turning points.</h3>
+  <p>
+  One of the most obvious problems was that some CloneHeroAI charts felt like drum charts instead of guitar charts.
+  The model was finding rhythmic information, but rhythm alone is not enough to identify guitar playing.
+  </p>
+  <p class="problem">
+  This was the point where the project had to stop asking only "where are the sounds?" and start asking "which sounds are actually the guitar?"
+  </p>
+  <span class="tag">PROBLEM IDENTIFIED: INSTRUMENT CONFUSION</span>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 05 — ISOLATING THE GUITAR</span>
+    <span class="post-date">STAGE 05</span>
+  </div>
+  <h3>Let the model hear the guitar first.</h3>
+  <p>
+  The pipeline began moving toward guitar-stem isolation before charting. The idea was straightforward:
+  if the charting model receives a guitar-focused signal instead of the entire mix, it has a much better opportunity to learn the information that matters.
+  </p>
+  <p>
+  This also changed the architecture of CloneHeroAI. Rather than one giant step from song to chart, the system began becoming a pipeline:
+  <b>isolate → analyze → generate</b>.
+  </p>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 06 — DATASET & TRAINING</span>
+    <span class="post-date">STAGE 06</span>
+  </div>
+  <h3>Teaching the system what guitar actually is.</h3>
+  <p>
+  Training data became one of the most important parts of the project. The dataset work moved toward paired examples and tolerance-based matching so the model could learn from aligned audio/chart information.
+  </p>
+  <p>
+  Another important idea was the use of hard negatives. A guitar model cannot simply learn "loud musical sound = guitar."
+  It needs to encounter drums, bass, vocals, synths and other material and learn that those sounds are not the guitar target.
+  </p>
+  <p>
+  The longer-term goal is for the model to work across different guitar tones, effects, techniques, playing styles and recording conditions rather than memorizing one kind of recording.
+  </p>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 07 — v0.5 → v0.6</span>
+    <span class="post-date">STAGE 07</span>
+  </div>
+  <h3>From recognizing guitar to understanding what the guitarist played.</h3>
+  <p>
+  Development increasingly focused on guitar intelligence rather than direct chart output.
+  The system needs to understand pitch, onsets, timing, polyphony and playing techniques before it can decide which five-fret notes belong in the final chart.
+  </p>
+  <p class="success">
+  v0.6 significantly improved pitch recognition. That improvement is part of the larger shift from "make a chart" to "understand the performance first."
+  </p>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 08 — v0.7</span>
+    <span class="post-date">STAGE 08 — CURRENT</span>
+  </div>
+  <h3>Turning guitar understanding into accurate events.</h3>
+  <p>
+  v0.7 is focused on the step between guitar intelligence and chart composition: accurate note events.
+  The goal is to make sure the system knows when a guitar event happened and what that event represents before it starts deciding how to place it on a five-fret highway.
+  </p>
+  <p>
+  This stage is still considered part of the <span class="status">UNUSABLE STAGE</span>. The project is not being treated as finished simply because the model can produce output.
+  The output needs to correlate with the actual guitar performance.
+  </p>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 09 — CHART COMPOSITION</span>
+    <span class="post-date">STAGE 09 — NEXT</span>
+  </div>
+  <h3>Understanding the performance is only half the job.</h3>
+  <p>
+  Once reliable guitar events exist, CloneHeroAI still has to turn them into playable five-fret charts.
+  This is where musicality, difficulty, note selection, chords, rhythm and chart design become important.
+  </p>
+  <p>
+  The long-term objective is not merely to reproduce raw pitch information. It is to create a chart that represents the guitar performance while remaining appropriate for the Clone Hero format.
+  </p>
+</article>
+
+<article class="post">
+  <div class="post-head">
+    <span class="post-number">DEV LOG 10 — USABLE RELEASE</span>
+    <span class="post-date">STAGE 10 — GOAL</span>
+  </div>
+  <h3>From research project to something players can actually use.</h3>
+  <p>
+  The final development stage is packaging the pipeline into a practical tool. That means reliable processing, playable output,
+  testing on songs the system has not simply memorized, and enough polish that another Clone Hero player can use it without needing to understand the research behind it.
+  </p>
+  <p>
+  The project roadmap describes this as the <b>USABLE RELEASE</b>: turning the system into a practical tool that other Clone Hero players can use.
+  </p>
+</article>
+
+<hr>
+
+<div class="box">
+  <div class="box-title">-- THE CURRENT PIPELINE --</div>
+  <table style="border-collapse:collapse;width:100%;font-size:13px">
+    <tr><td style="border:1px solid #3b4656;padding:7px;width:28%;font-weight:bold;background:#111923;color:#9dc4fa">01 — ISOLATE</td>
+    <td style="border:1px solid #3b4656;padding:7px">Focus the pipeline on guitar instead of treating the entire mix as guitar.</td></tr>
+    <tr><td style="border:1px solid #3b4656;padding:7px;font-weight:bold;background:#111923;color:#9dc4fa">02 — ANALYZE</td>
+    <td style="border:1px solid #3b4656;padding:7px">Understand pitch, timing, onsets, polyphony and guitar-specific playing information.</td></tr>
+    <tr><td style="border:1px solid #3b4656;padding:7px;font-weight:bold;background:#111923;color:#9dc4fa">03 — GENERATE</td>
+    <td style="border:1px solid #3b4656;padding:7px">Turn understood musical events into a playable five-fret Clone Hero chart.</td></tr>
+  </table>
+</div>
+
+<p><a href="index.html">← Return to Jujosmi Labs home</a></p>
+
+</main>
+<footer class="footer">© 2026 Jujosmi Labs &nbsp; | &nbsp; CloneHeroAI Development Blog</footer>
+</div>
+</body>
+</html>
