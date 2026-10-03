@@ -87,7 +87,7 @@ separate the guitar from the rest of the song, understand what is being played, 
 <div class="box">
   <div class="box-title">-- WHERE THE PROJECT IS NOW --</div>
   <b>Current phase: Guitar Intelligence</b><br><br>
-  We’re currently in Guitar Intelligence v0.8 postmortem/diagnostic stage. We successfully expanded the training data with Guitar-TECHS and completed a 24-epoch v0.8 training run, but validation performance collapsed compared with the v0.7 GuitarSet baseline, so we’re diagnosing the domain/generalization problem before building v0.8.1. The diagnostic script is now fixed and running to compare v0.7, v0.8-best, and v0.8-latest across the datasets.</p>
+  We’re at the Guitar Intelligence v0.8 postmortem stage: Guitar-TECHS was successfully added and trained, but v0.8 did not generalize well enough across both datasets. The diagnostics show a strong domain gap, with v0.8 slightly improving on Guitar-TECHS while sacrificing some GuitarSet performance, so the next step is to redesign the training approach for v0.8.1 domain-generalized guitar understanding before moving into chart composition.</p>
   <span style="color: #ff3333;" class="status">UNUSABLE STAGE</span> - Being developed toward a practical release.
 </div>
 
