@@ -93,62 +93,21 @@ separate the guitar from the rest of the song, understand what is being played, 
 
 <hr>
 
-<h2>THE DEVELOPMENT STORY</h2>
-
-<div class="timeline">
-  <div class="item"><b>Stage 01 — The Original Idea</b><br>
-  Start with a song and try to automatically create a playable Clone Hero chart.</div>
-
-  <div class="item"><b>Stage 02 — The First Charting Experiments</b><br>
-  Early approaches could produce note patterns, but the results did not reliably represent guitar playing.</div>
-
-  <div class="item"><b>Stage 03 — Audio2Chart Baseline</b><br>
-  A baseline charting approach established that automatic chart generation was possible, but exposed major timing and instrument-recognition problems.</div>
-
-  <div class="item"><b>Stage 04 — The "Why Does This Sound Like Drums?" Problem</b><br>
-  The generated charts often looked more like rhythmic/percussive patterns than guitar parts. This changed the direction of the project.</div>
-
-  <div class="item"><b>Stage 05 — Guitar Isolation</b><br>
-  The pipeline began moving toward separating the guitar stem before AI charting, so the model could concentrate on guitar instead of the full mix.</div>
-
-  <div class="item"><b>Stage 06 — Dataset & Training</b><br>
-  Paired training data and harder negative examples became important: the model needs to recognize guitar while rejecting drums, bass, vocals and other sounds.</div>
-
-  <div class="item"><b>Stage 07 — Guitar Intelligence v0.5–v0.6</b><br>
-  Development shifted from simply generating notes toward recognizing pitch, onsets, polyphony and guitar-specific information.</div>
-
-  <div class="item"><b>Stage 08 — v0.7: Accurate Note Events</b><br>
-  The current focus is turning the model's guitar understanding into reliable note events before chart composition.</div>
-
-  <div class="item"><b>Stage 09 — Playable Chart Generation</b><br>
-  The next major goal is converting accurate events into musical five-fret charts that actually feel good to play.</div>
-
-  <div class="item"><b>Stage 10 — Usable Release</b><br>
-  Package the system into something other Clone Hero players can actually use, test it on unseen songs, and improve it from real-world results.</div>
-</div>
-
-<hr>
-
 <article class="post">
   <div class="post-head">
-    <span class="post-number">DEV LOG 01 — THE IDEA</span>
-    <span class="post-date">STAGE 01</span>
+    <span class="post-number">Development log</span>
+    <span class="post-date">01</span>
   </div>
   <h3>What if the chart could make itself?</h3>
   <p>
-  The project began with a simple goal: take a song file and automatically turn the guitar part into a playable Clone Hero chart.
-  Instead of manually authoring every note, the system would listen to the music and attempt to understand what the guitarist played.
-  </p>
-  <p>
-  That immediately created a much bigger problem. A song is not just guitar. It contains drums, bass, vocals, synths, effects and other sounds.
-  If the system cannot tell those things apart, it cannot reliably know which sounds should become guitar notes.
+  Begin with the idea - Can a machine learn how to make Guitar Hero Charts? Build the basic architecture and refrences for the model.
   </p>
 </article>
 
 <article class="post">
   <div class="post-head">
-    <span class="post-number">DEV LOG 02 — EARLY CHARTING</span>
-    <span class="post-date">STAGE 02</span>
+    <span class="post-number">Development log</span>
+    <span class="post-date">02</span>
   </div>
   <h3>The first attempts could make notes — but not necessarily the right notes.</h3>
   <p>
@@ -159,15 +118,13 @@ separate the guitar from the rest of the song, understand what is being played, 
   The important lesson from this stage was that chart generation could not be treated as a simple pattern-making problem.
   The system needed information about the actual performance first.
   </p>
-  <span class="tag">LESSON: GENERATION IS NOT UNDERSTANDING</span>
 </article>
 
 <article class="post">
   <div class="post-head">
-    <span class="post-number">DEV LOG 03 — AUDIO2CHART</span>
-    <span class="post-date">STAGE 03</span>
+    <span class="post-number">Development log</span>
+    <span class="post-date">03</span>
   </div>
-  <h3>Establishing a baseline.</h3>
   <p>
   Audio2Chart became an important baseline for the project. It showed that a pipeline could go from audio toward automatically produced chart data,
   but it also made the weaknesses visible.
@@ -180,48 +137,35 @@ separate the guitar from the rest of the song, understand what is being played, 
 
 <article class="post">
   <div class="post-head">
-    <span class="post-number">DEV LOG 04 — THE DRUM-LIKE CHART PROBLEM</span>
-    <span class="post-date">STAGE 04</span>
+    <span class="post-number">Development log</span>
+    <span class="post-date">04</span>
   </div>
-  <h3>One of the biggest turning points.</h3>
   <p>
-  One of the most obvious problems was that some CloneHeroAI charts felt like drum charts instead of guitar charts.
-  The model was finding rhythmic information, but rhythm alone is not enough to identify guitar playing.
+  The first stage containg a test chart. The results were unpleasant, however, and the charts were dominated by drum like charting patterns.
   </p>
-  <p class="problem">
-  This was the point where the project had to stop asking only "where are the sounds?" and start asking "which sounds are actually the guitar?"
   </p>
-  <span class="tag">PROBLEM IDENTIFIED: INSTRUMENT CONFUSION</span>
+  <span class="tag">PROBLEM IDENTIFIED</span>
 </article>
 
 <article class="post">
   <div class="post-head">
-    <span class="post-number">DEV LOG 05 — ISOLATING THE GUITAR</span>
-    <span class="post-date">STAGE 05</span>
+    <span class="post-number">Development log</span>
+    <span class="post-date">05</span>
   </div>
-  <h3>Let the model hear the guitar first.</h3>
   <p>
-  The pipeline began moving toward guitar-stem isolation before charting. The idea was straightforward:
+  The pipeline began moving toward guitar-stem isolation before charting.
   if the charting model receives a guitar-focused signal instead of the entire mix, it has a much better opportunity to learn the information that matters.
   </p>
-  <p>
-  This also changed the architecture of CloneHeroAI. Rather than one giant step from song to chart, the system began becoming a pipeline:
-  <b>isolate → analyze → generate</b>.
-  </p>
 </article>
 
 <article class="post">
   <div class="post-head">
-    <span class="post-number">DEV LOG 06 — DATASET & TRAINING</span>
-    <span class="post-date">STAGE 06</span>
+    <span class="post-number">Development log</span>
+    <span class="post-date">06</span>
   </div>
   <h3>Teaching the system what guitar actually is.</h3>
   <p>
   Training data became one of the most important parts of the project. The dataset work moved toward paired examples and tolerance-based matching so the model could learn from aligned audio/chart information.
-  </p>
-  <p>
-  Another important idea was the use of hard negatives. A guitar model cannot simply learn "loud musical sound = guitar."
-  It needs to encounter drums, bass, vocals, synths and other material and learn that those sounds are not the guitar target.
   </p>
   <p>
   The longer-term goal is for the model to work across different guitar tones, effects, techniques, playing styles and recording conditions rather than memorizing one kind of recording.
@@ -230,10 +174,9 @@ separate the guitar from the rest of the song, understand what is being played, 
 
 <article class="post">
   <div class="post-head">
-    <span class="post-number">DEV LOG 07 — v0.5 → v0.6</span>
-    <span class="post-date">STAGE 07</span>
+    <span class="post-number">Development log</span>
+    <span class="post-date">07</span>
   </div>
-  <h3>From recognizing guitar to understanding what the guitarist played.</h3>
   <p>
   Development increasingly focused on guitar intelligence rather than direct chart output.
   The system needs to understand pitch, onsets, timing, polyphony and playing techniques before it can decide which five-fret notes belong in the final chart.
@@ -245,47 +188,12 @@ separate the guitar from the rest of the song, understand what is being played, 
 
 <article class="post">
   <div class="post-head">
-    <span class="post-number">DEV LOG 08 — v0.7</span>
-    <span class="post-date">STAGE 08 — CURRENT</span>
+    <span class="post-number">Development log</span>
+    <span class="post-date">08</span>
   </div>
-  <h3>Turning guitar understanding into accurate events.</h3>
   <p>
   v0.7 is focused on the step between guitar intelligence and chart composition: accurate note events.
   The goal is to make sure the system knows when a guitar event happened and what that event represents before it starts deciding how to place it on a five-fret highway.
-  </p>
-  <p>
-  This stage is still considered part of the <span class="status">UNUSABLE STAGE</span>. The project is not being treated as finished simply because the model can produce output.
-  The output needs to correlate with the actual guitar performance.
-  </p>
-</article>
-
-<article class="post">
-  <div class="post-head">
-    <span class="post-number">DEV LOG 09 — CHART COMPOSITION</span>
-    <span class="post-date">STAGE 09 — NEXT</span>
-  </div>
-  <h3>Understanding the performance is only half the job.</h3>
-  <p>
-  Once reliable guitar events exist, CloneHeroAI still has to turn them into playable five-fret charts.
-  This is where musicality, difficulty, note selection, chords, rhythm and chart design become important.
-  </p>
-  <p>
-  The long-term objective is not merely to reproduce raw pitch information. It is to create a chart that represents the guitar performance while remaining appropriate for the Clone Hero format.
-  </p>
-</article>
-
-<article class="post">
-  <div class="post-head">
-    <span class="post-number">DEV LOG 10 — USABLE RELEASE</span>
-    <span class="post-date">STAGE 10 — GOAL</span>
-  </div>
-  <h3>From research project to something players can actually use.</h3>
-  <p>
-  The final development stage is packaging the pipeline into a practical tool. That means reliable processing, playable output,
-  testing on songs the system has not simply memorized, and enough polish that another Clone Hero player can use it without needing to understand the research behind it.
-  </p>
-  <p>
-  The project roadmap describes this as the <b>USABLE RELEASE</b>: turning the system into a practical tool that other Clone Hero players can use.
   </p>
 </article>
 
