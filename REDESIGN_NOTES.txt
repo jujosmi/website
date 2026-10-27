@@ -1,0 +1,18 @@
+JUJOSMI LABS — NVIDIA 2004-ERA INSPIRED REDESIGN
+
+This static site uses a shared retro.css stylesheet and separate HTML documents for the main navigation:
+- index.html — Home
+- projects.html — Project Directory
+- cloneheroai.html — Guitar AI project overview
+- technology.html — separate Technology page
+- download.html — separate release/download status page
+- devblog.html — Development Log
+- about.html — About Jujosmi Labs
+- contact.html — Contact
+- old-cloneheroai.html — archived project outline
+
+The CloneHeroAI project tab row links to Overview, Technology, Download, and Development Log as distinct pages. Download status is explicit: no public build is advertised while the project remains in development.
+
+Upload the contents of this site directory to the same web root. Keep the PNG assets and retro.css alongside the HTML files. All navigation is ordinary local HTML linking; no framework, build step, or server-side code is required.
+
+Visual direction: centered early-2000s technology portal, dark metallic header, beveled silver gradient tab navigation, green accent bars, compact sidebar directory, bordered content panels, and a feature banner using the site's existing artwork. This is an homage to the period's design language, not a copy of NVIDIA's graphics or branding.
